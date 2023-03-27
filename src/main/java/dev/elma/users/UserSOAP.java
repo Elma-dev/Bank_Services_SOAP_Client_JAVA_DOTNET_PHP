@@ -1,8 +1,9 @@
 package dev.elma.users;
 
-import dev.elma.Proxy.BankServices;
-import dev.elma.Proxy.BankServices_Service;
-import dev.elma.Proxy.Client;
+import dev.elma.proxys.BankServices;
+import dev.elma.proxys.BankServices_Service;
+import dev.elma.proxys.Client;
+
 
 public class UserSOAP {
     public static void main(String[] args) {
@@ -19,8 +20,8 @@ public class UserSOAP {
         Client newCompte3 = stubs.createNewCompte("client 3",4321,25000);
         System.out.println("New Compte: "+newCompte3.getCode()+" "+newCompte3.getSolde());
         System.out.println("********************LIST OF CLIENTS******************");
-        System.out.println(stubs.allComptes());
-
-
+        for(Object o: stubs.allComptes().toArray()){
+            System.out.println(((Client)o));
+        }
     }
 }
